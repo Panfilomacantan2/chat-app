@@ -22,6 +22,13 @@ const clientForm = document.querySelector('form');
 clientForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 	const msgInput = document.querySelector('input');
+
+	if(msgInput.value.trim() === '') {
+		return;
+	}
+
+
+
 	socket.emit('chat-message', { msg: msgInput.value, type: 'me' });
 	resetInput();
 
