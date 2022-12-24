@@ -38,8 +38,16 @@ clientForm.addEventListener('submit', (e) => {
 function appendMessage(msg, type) {
 	const messageContainer = document.querySelector('.message-container');
 	const messageDiv = document.createElement('div');
+	const timeTextDiv = document.createElement('div');
+	const time = new Date();
+	let isPM = time.getHours() >= 12 ? 'pm' : 'am'
+	const timeText = `${time.getHours() - 12}:${time.getMinutes()} ${isPM}`;
+	timeTextDiv.classList.add('time-text');
+	timeTextDiv.innerText = timeText;
+	
 	messageDiv.classList.add('message', `${type}`);
 	messageDiv.innerText = msg;
+	messageDiv.appendChild(timeTextDiv);
 	messageContainer.appendChild(messageDiv);
 
 }
