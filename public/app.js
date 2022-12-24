@@ -34,7 +34,17 @@ function appendMessage(msg, type) {
 	messageDiv.classList.add('message', `${type}`);
 	messageDiv.innerText = msg;
 	messageContainer.appendChild(messageDiv);
+
 }
+
+const allMessages = document.querySelectorAll('.message');
+allMessages.forEach((message) => {
+	message.addEventListener('click', function() {
+		console.log(this.innerText);
+		
+	});
+});
+
 
 function resetInput() {
 	const msgInput = document.querySelector('input');
