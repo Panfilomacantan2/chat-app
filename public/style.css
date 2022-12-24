@@ -108,6 +108,9 @@ button{
 
 
 @media (max-width: 500px) {
+	.message-container {
+		padding: 30px 5px;
+	}
 	.message{
 		max-width: 200px;
 	
