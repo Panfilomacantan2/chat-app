@@ -41,7 +41,7 @@ function appendMessage(msg, type) {
 	const timeTextDiv = document.createElement('div');
 	const time = new Date();
 	let isPM = time.getHours() >= 12 ? 'pm' : 'am'
-	const timeText = `${time.getHours() - 12}:${time.getMinutes()} ${isPM}`;
+	const timeText = `${time.getHours() - 12}:${time.getMinutes() > 9 ? time.getMinutes() : '0'+time.getMinutes()} ${isPM}`;
 	timeTextDiv.classList.add('time-text');
 	timeTextDiv.innerText = timeText;
 	
