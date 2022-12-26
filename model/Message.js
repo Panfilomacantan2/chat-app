@@ -1,5 +1,6 @@
-import mongoose from 'mongoose';
-import moment from 'moment-timezone';
+
+const mongoose = require('mongoose');
+const moment = require('moment-timezone');
 
 const messageSchema = mongoose.Schema({
 	message: String,
@@ -10,4 +11,4 @@ const messageSchema = mongoose.Schema({
 	},
 });
 
-export default mongoose.model('Message', messageSchema);
+module.exports = mongoose.model('Message', messageSchema);

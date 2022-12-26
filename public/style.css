@@ -26,62 +26,119 @@ form {
 	grid-template-columns: 1fr 100px;
 }
 
-.message-container {
+.chat-container {
 	width: 100%;
 	max-width: 500px;
 	margin: 0 auto;
-	padding: 20px;
-	border: 1px solid #ccc;
+	padding: 10px 10px 15px 10px;
 	height: 400px;
-	padding: 20px;
 	overflow-y: scroll;
-	display: flex;
-	flex-direction: column;
 	background-color: #222222;
 	border-radius: 5px;
+	position: relative;
 }
 
-.message-container::-webkit-scrollbar {
-	width: 0;
+.message-body{
+	display: flex ;
+	flex-direction: column;
+	height: 400px;
+	overflow-y: scroll;
+}
+.message-header {
+	width: 100%;
+	color: #fff;
+	background-color: rgb(71, 22, 204);
+	padding: 10px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	display: flex;
+	justify-content: space-between;
 }
 
-.message {
+.active-users {
+	display: flex;
+	align-items: center;
+}
+
+.green-dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background-color: #00ff00;
+	margin-right: 5px;
+
+}
+
+.message-body {
+	width: 100%;
+	height: 100%;
+}
+
+.message-container {
+	max-width: 280px;
+	display: flex;
+	align-items: center;
+	background-color: #222222;
 	border-radius: 5px;
 	padding: 10px;
-	font-size: 16px;
 	line-height: 1.5;
+	font-size: 16px;
 	color: #333;
-	margin: 5px;
-	max-width: 300px;
 	position: relative;
 	word-wrap: break-word;
 	margin-top: 20px;
 	min-width: 40px;
+	margin-bottom: 10px;
+	justify-content: center;
+
 }
 
-.message.me {
+.message{
+	padding: 10px;
+	word-wrap: break-word;
+	max-width: 200px;
+}
+
+.chat-container::-webkit-scrollbar {
+	width: 0;
+}
+.message-body::-webkit-scrollbar {
+	width: 0;
+}
+.message-container::-webkit-scrollbar {
+	width: 0;
+}
+
+/* add margin top to first child */
+.message-container:first-child {
+	margin-top: 50px;
+}
+
+
+.message-container.me {
 	border-bottom-right-radius: 15px;
 	border-top-right-radius: 5px;
 	color: #fff;
 	align-self: flex-end;
-	background-color: #434242;
+	background-color: rgb(71, 22, 204);
 }
 
-.message.bot {
+.message-container.bot {
 	border-bottom-left-radius: 15px;
 	border-top-left-radius: 5px;
 	color: #fff;
-	align-self: flex-start;
-	background-color: rgb(71, 22, 204);
-
+	align-self: start;
+	background-color: #434242;
 }
-.time-text{
+
+.time-text {
 	font-size: 12px;
 	color: #fff;
 	position: absolute;
 	bottom: -20px;
 	right: 0;
-
 }
 
 input,
@@ -90,29 +147,35 @@ button {
 	margin-top: 5px;
 }
 
-input{
+input {
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	background-color: #fff;
 	outline: none;
 }
 
-button{
+button {
 	background-color: #222222;
+	border: none;
 }
 
-.fa-paper-plane{
+.fa-paper-plane {
 	color: #fff;
 	font-size: 20px !important;
 }
 
+.avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: #fff;
+}
 
 @media (max-width: 500px) {
-	.message-container {
+	.message-body {
 		padding: 30px 5px;
 	}
-	.message{
+	.message {
 		max-width: 200px;
-	
 	}
 }
