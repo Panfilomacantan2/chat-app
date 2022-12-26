@@ -76,7 +76,7 @@ function appendMessage(msg, type, avatar) {
 				<div class="message-container ${type}">
 					${isMe}
 						<div class="message">
-							<p>${msg}</p>
+							<p class="txt-msg">${msg}</p>
 							<span class="time-text">3:46pm</span>
 						</div>
 				</div>
