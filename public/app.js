@@ -34,7 +34,7 @@ socket.on('message', ({ msg, type, avatar }) => {
 socket.on('connect', () => {
 	socket.on('usersCount', (count) => {
 		usersCount = count;
-		document.querySelector('.total-user').innerText = `${usersCount + 1}`;
+		document.querySelector('.total-user').innerText = `${usersCount}`;
 
 		console.log(`Total users: ${usersCount}`);
 	});
