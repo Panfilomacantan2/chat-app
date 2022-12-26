@@ -17,7 +17,7 @@ const { joinUser, countUsers, getAllUsers, getCurrentUser } = require('./utils/u
 //io.on means listen to all users
 io.on('connection', (socket) => {
 	// count users when a user joins
-	socket.emit('usersCount', countUsers());
+	io.emit('usersCount', countUsers());
 
 	// add new user to users array
 	joinUser(socket.id, 'User', 'https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png');
