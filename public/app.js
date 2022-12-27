@@ -78,8 +78,8 @@ function appendMessage(msg, type, avatar) {
 				<div class="message-container ${type}">
 					${isMe}
 						<div class="message">
-							<p class="txt-msg">${msg}</p>
-							<span class="time-text">3:46pm</span>
+							<p class="txt-msg ${type}">${msg}</p>
+							<span class="time-text">${getCurrentTime()}</span>
 						</div>
 				</div>
 			
@@ -100,3 +100,15 @@ function resetInput() {
 	msgInput.value = '';
 	msgInput.focus();
 }
+
+// get current hour and minute to display on the chat
+function getCurrentTime() {
+	const date = new Date();
+	const hour = date.getHours() % 12 || 12;
+	const minute = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+	const isAm = date.getHours() <= 12 ? 'AM' : 'PM';
+	return `${hour}:${minute}${isAm}`;
+}
+
+console.log(getCurrentTime());
+

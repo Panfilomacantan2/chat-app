@@ -13,6 +13,7 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 const { joinUser, countUsers, getAllUsers, getCurrentUser } = require('./utils/users');
+const { formatMessage } = require('./utils/messages');
 
 //io.on means listen to all users
 io.on('connection', (socket) => {
