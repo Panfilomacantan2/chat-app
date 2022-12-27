@@ -11,7 +11,7 @@ const getAllUsers = () => {
 };
 
 const getCurrentUser = (id) => {
-	return users.filter((user) => user.id === id);
+	return users.find((user) => user.id === id);
 };
 
 const countUsers = () => {

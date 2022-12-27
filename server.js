@@ -18,20 +18,32 @@ const { formatMessage } = require('./utils/messages');
 //io.on means listen to all users
 io.on('connection', (socket) => {
 	// count users when a user joins
+
 	io.emit('usersCount', countUsers());
 
-	// add new user to users array
-	joinUser(socket.id, 'User', 'https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png');
+	socket.on('join', ({ id, username, avatar }) => {
+		socket.broadcast.emit('message', { msg: `${username} joined the channel.`, type: 'other' });
 
-	// socket.emit means send to the user who just joined
+		// add new user to users array
+		joinUser(id, username, avatar);
+
+		console.log(getAllUsers());
+	});
+
+	const getCurrent = getAllUsers().find((user) => user.id === socket.id);
+	console.log(getCurrent);
+
 	socket.emit('message', { msg: 'Welcome to Chat Cord.', type: 'other', id: socket.id, avatar: 'https://cdn.icon-icons.com/icons2/1371/PNG/512/robot02_90810.png' });
 
+	// socket.emit means send to the user who just joined
+
 	// socket.broadcast.emit means send to all users except the user who just joined
-	socket.broadcast.emit('message', { msg: 'A user joined the channel.', type: 'other' });
 
 	socket.on('disconnect', () => {
+
+		
 		// io.emit means send to all users
-		io.emit('message', { msg: 'User disconnected', type: 'other' });
+		io.emit('message', { msg: 'Panfilo left the chat.', type: 'other' });
 
 		// if there are users connected, get the user who just disconnected
 		const users = getAllUsers();
@@ -44,7 +56,7 @@ io.on('connection', (socket) => {
 			socket.broadcast.emit('userDisconnected', countUsers());
 		}
 
-		console.log(users);
+		console.log(index);
 	});
 
 	// socket.on means listen to the user who just joined

@@ -6,7 +6,7 @@ const messageChat = document.querySelector('.message-body');
 
 const closeTab = document.querySelector('.closetab');
 
-let usersCount
+let usersCount;
 
 closeTab.addEventListener('click', function () {
 	// close tab
@@ -24,13 +24,9 @@ socket.on('message', ({ msg, type, avatar }) => {
 		appendMessage(`${msg}`, 'me', userAvatar);
 		messageChat.scrollTop = messageChat.scrollHeight + 100;
 	}
-
-	
-
 });
 
 // get the total number of users
-
 socket.on('connect', () => {
 	socket.on('usersCount', (count) => {
 		usersCount = count;
@@ -44,7 +40,6 @@ socket.on('userDisconnected', (count) => {
 	usersCount = count;
 	document.querySelector('.total-user').innerText = ` ${count}`;
 	console.log(`Total users DC: ${usersCount}`);
-
 });
 
 const clientForm = document.querySelector('form');
@@ -60,12 +55,12 @@ clientForm.addEventListener('submit', (e) => {
 	resetInput();
 });
 
-function checkType (type, avatar){
-	if(type === 'bot'){
+function checkType(type, avatar) {
+	if (type === 'bot') {
 		return `<img class="avatar" src="${avatar}" alt="" />`;
-	}else if(type === 'me'){
+	} else if (type === 'me') {
 		return ``;
-	}else if(type === 'other'){
+	} else if (type === 'other') {
 		return `<img class="avatar" src="${avatar}" alt="" />`;
 	}
 }
@@ -85,7 +80,6 @@ function appendMessage(msg, type, avatar) {
 			
 	`;
 	messageChat.innerHTML += output;
-	
 }
 
 const allMessages = document.querySelectorAll('.message');
@@ -112,3 +106,18 @@ function getCurrentTime() {
 
 console.log(getCurrentTime());
 
+// submit username
+const btnSubmit = document.querySelector('#btnSubmit');
+
+btnSubmit.addEventListener('click', function (e) {
+	e.preventDefault();
+	const username = document.querySelector('#username');
+
+	if (username.value.trim() === '') return;
+
+	socket.emit('join', { id: socket.id, username: username.value, avatar: userAvatar });
+
+	console.log({ id: socket.id, username: username.value, avatar: userAvatar });
+
+	username.value = '';
+});
