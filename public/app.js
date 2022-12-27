@@ -34,7 +34,7 @@ socket.on('message', ({ msg, type, avatar }) => {
 socket.on('connect', () => {
 	socket.on('usersCount', (count) => {
 		usersCount = count;
-		document.querySelector('.total-user').innerText = `${usersCount}`;
+		document.querySelector('.total-user').innerText = `${count + 1}`;
 
 		console.log(`Total users: ${usersCount}`);
 	});
@@ -42,7 +42,9 @@ socket.on('connect', () => {
 
 socket.on('userDisconnected', (count) => {
 	usersCount = count;
-	document.querySelector('.total-user').innerText = ` ${usersCount}`;
+	document.querySelector('.total-user').innerText = ` ${count}`;
+	console.log(`Total users DC: ${usersCount}`);
+
 });
 
 const clientForm = document.querySelector('form');
