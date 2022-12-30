@@ -4,6 +4,7 @@ const path = require('path');
 const { Server } = require('socket.io');
 const { fileURLToPath } = require('url');
 const cors = require('cors');
+var phil = require('phil-reg-prov-mun-brgy');
 
 const PORT = process.env.PORT || 4000;
 
@@ -12,51 +13,32 @@ app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server);
 
-const { joinUser, countUsers, getAllUsers, getCurrentUser } = require('./utils/users');
+const { joinUser, countUsers, getAllUsers, getCurrentUser, userLeave } = require('./utils/users');
 const { formatMessage } = require('./utils/messages');
+const username = 'John Doe';
+const avatar = 'https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png';
 
 //io.on means listen to all users
 io.on('connection', (socket) => {
-	// count users when a user joins
+	const joined = joinUser(socket.id, username, avatar);
 
-	io.emit('usersCount', countUsers());
-
-	socket.on('join', ({ id, username, avatar }) => {
-		socket.broadcast.emit('message', { msg: `${username} joined the channel.`, type: 'other' });
-
-		// add new user to users array
-		joinUser(id, username, avatar);
-
-		console.log(getAllUsers());
-	});
-
-	const getCurrent = getAllUsers().find((user) => user.id === socket.id);
-	console.log(getCurrent);
-
-	socket.emit('message', { msg: 'Welcome to Chat Cord.', type: 'other', id: socket.id, avatar: 'https://cdn.icon-icons.com/icons2/1371/PNG/512/robot02_90810.png' });
-
-	// socket.emit means send to the user who just joined
-
-	// socket.broadcast.emit means send to all users except the user who just joined
+	if (joined) {
+		socket.emit('message', { msg: 'Welcome to the chat!', type: 'other' });
+		// update the user count when a user joins
+		io.emit('usersCount', countUsers());
+	}
 
 	socket.on('disconnect', () => {
-
-		
+		const users = userLeave(socket.id);
+		console.log(users);
 		// io.emit means send to all users
-		io.emit('message', { msg: 'Panfilo left the chat.', type: 'other' });
-
-		// if there are users connected, get the user who just disconnected
-		const users = getAllUsers();
-		const index = users.find((user) => user.id === socket.id);
-		// remove the user who just disconnected from the users array
-		const isRemoved = users.splice(index, 1);
-
-		if (isRemoved) {
-			console.log('User removed', isRemoved);
-			socket.broadcast.emit('userDisconnected', countUsers());
+		if (users) {
+			io.emit('message', { msg: 'Panfilo left the chat.', type: 'other' });
+			// find the current user who just disconnected
+			socket.emit('userDisconnected', countUsers());
+			// user count when a user leaves
+			io.emit('usersCount', countUsers());
 		}
-
-		console.log(index);
 	});
 
 	// socket.on means listen to the user who just joined

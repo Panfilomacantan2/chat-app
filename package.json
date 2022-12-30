@@ -17,6 +17,7 @@
 		"moment": "^2.29.4",
 		"moment-timezone": "^0.5.34",
 		"mongoose": "^6.5.2",
+		"phil-reg-prov-mun-brgy": "^1.1.0",
 		"socket.io": "^4.5.1"
 	},
 	"devDependencies": {

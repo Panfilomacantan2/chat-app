@@ -1,21 +1,30 @@
-const users = [];
+let users = [];
 
-const joinUser = (id, username, avatar) => {
+function joinUser(id, username, avatar) {
 	const user = { id, username, avatar };
 	users.push(user);
 	return user;
-};
+}
 
-const getAllUsers = () => {
+function getAllUsers() {
 	return users;
-};
+}
 
-const getCurrentUser = (id) => {
+function getCurrentUser(id) {
 	return users.find((user) => user.id === id);
-};
+}
 
-const countUsers = () => {
+function countUsers() {
 	return users.length;
-};
+}
 
-module.exports = { joinUser, countUsers, getAllUsers, getCurrentUser };
+// User leaves chat
+function userLeave(id) {
+	const index = users.find((user) => user.id === id);
+
+	if (index !== -1) {
+		return users.splice(index, 1)[0];
+	}
+}
+
+module.exports = { joinUser, countUsers, getAllUsers, getCurrentUser, userLeave };
