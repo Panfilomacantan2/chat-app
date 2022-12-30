@@ -32,6 +32,25 @@ socket.on('connect', () => {
 		usersCount = count;
 		document.querySelector('.total-user').innerText = `${count}`;
 
+		// ad video chat
+		const video = document.createElement('video');
+		video.muted = true;
+		video.controls = true;
+		video.autoplay = true;
+
+		navigator.mediaDevices
+			.getUserMedia({
+				video: true,
+				audio: true,
+			})
+			.then((stream) => {
+				video.srcObject = stream;
+				video.addEventListener('loadedmetadata', () => {
+					video.play();
+				});
+				document.querySelector('.video-container').append(video);
+			});
+
 		console.log(`Total users: ${usersCount}`);
 	});
 });

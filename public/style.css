@@ -182,3 +182,16 @@ button {
 		max-width: 200px;
 	}
 }
+
+
+.video-container {
+	width: 100%;
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 10px 10px 15px 10px;
+	height: 400px;
+	overflow-y: scroll;
+	background-color: #222222;
+	border-radius: 5px;
+	position: relative;
+}
