@@ -9,7 +9,11 @@ var phil = require('phil-reg-prov-mun-brgy');
 const PORT = process.env.PORT || 4000;
 
 const app = express();
-app.use(cors());
+app.use(
+	cors({
+		origin: '*',
+	}),
+);
 const server = http.createServer(app);
 const io = new Server(server);
 

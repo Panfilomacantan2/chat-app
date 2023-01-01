@@ -10,7 +10,6 @@
 		<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
 	</head>
 	<body>
-		<div class="video-container"></div>
 		<div class="chat-container">
 			<div class="message-header">
 				<h3>Chat app</h3>
@@ -30,11 +29,14 @@
 
 		<div class="form-container">
 			<form>
-				<input type="text" id="username" autocomplete="off"/>
+				<input type="text" id="username" autocomplete="off" />
 				<input type="submit" value="Send" id="btnSubmit" />
 			</form>
 		</div>
 
+		<button id="btnPermission">Click</button>
+
+		<script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="./app.js"></script>
 	</body>

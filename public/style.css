@@ -38,8 +38,8 @@ form {
 	position: relative;
 }
 
-.message-body{
-	display: flex ;
+.message-body {
+	display: flex;
 	flex-direction: column;
 	height: 400px;
 	overflow-y: scroll;
@@ -68,7 +68,6 @@ form {
 	border-radius: 50%;
 	background-color: #00ff00;
 	margin-right: 5px;
-
 }
 
 .message-body {
@@ -92,15 +91,14 @@ form {
 	min-width: 40px;
 	margin-bottom: 10px;
 	justify-content: center;
-
 }
 
-.message{
+.message {
 	word-wrap: break-word;
 	max-width: 200px;
 }
 
-.txt-msg.bot{
+.txt-msg.bot {
 	margin-left: 10px;
 }
 
@@ -118,7 +116,6 @@ form {
 .message-container:first-child {
 	margin-top: 50px;
 }
-
 
 .message-container.me {
 	border-bottom-right-radius: 15px;
@@ -181,17 +178,4 @@ button {
 	.message {
 		max-width: 200px;
 	}
-}
-
-
-.video-container {
-	width: 100%;
-	max-width: 500px;
-	margin: 0 auto;
-	padding: 10px 10px 15px 10px;
-	height: 400px;
-	overflow-y: scroll;
-	background-color: #222222;
-	border-radius: 5px;
-	position: relative;
 }

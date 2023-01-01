@@ -32,25 +32,6 @@ socket.on('connect', () => {
 		usersCount = count;
 		document.querySelector('.total-user').innerText = `${count}`;
 
-		// ad video chat
-		const video = document.createElement('video');
-		video.muted = true;
-		video.controls = true;
-		video.autoplay = true;
-
-		navigator.mediaDevices
-			.getUserMedia({
-				video: true,
-				audio: true,
-			})
-			.then((stream) => {
-				video.srcObject = stream;
-				video.addEventListener('loadedmetadata', () => {
-					video.play();
-				});
-				document.querySelector('.video-container').append(video);
-			});
-
 		console.log(`Total users: ${usersCount}`);
 	});
 });
@@ -140,3 +121,23 @@ btnSubmit.addEventListener('click', function (e) {
 
 	username.value = '';
 });
+
+const btnPermission = document.querySelector('#btnPermission');
+
+btnPermission.addEventListener('click', function () {
+	Notification.requestPermission().then(function (result) {
+		
+		if(result === 'granted') {
+			new Notification('Welcome to the chat room!', {
+				body: 'You can now chat with other users',
+				icon: 'https://cdn.icon-icons.com/icons2/1371/PNG/512/robot02_90810.png'
+			});
+			console.log('Notification permission granted');
+		} else {
+			console.log('Notification permission denied');
+		}
+
+	});
+
+});
+
