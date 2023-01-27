@@ -19,22 +19,11 @@
 				</h3>
 			</div>
 			<div class="message-body"></div>
-		</div>
-
-		<form>
-			<input type="text" placeholder="Enter your message" autofocus />
-			<button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-		</form>
-		<a href="#" class="closetab">close</a>
-
-		<div class="form-container">
-			<form>
-				<input type="text" id="username" autocomplete="off" />
-				<input type="submit" value="Send" id="btnSubmit" />
+			<form autocomplete="off">
+				<input type="text" placeholder="Enter your message" autofocus id="formInput" />
+				<button type="submit" id="submitFormBtn"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
 			</form>
 		</div>
-
-		<button id="btnPermission">Click</button>
 
 		<script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
