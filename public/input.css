@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	background: #1e293b;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	padding: 10px;
+}
+
+.fa-paper-plane {
+	color: #3730a3;
+	font-size: 20px !important;
+	cursor: pointer;
+}
+
+.fa-thumbs-up {
+	color: #3730a3;
+	font-size: 30px !important;
+	cursor: pointer;
+}
+
+@media (max-width: 500px) {
+	.message-body {
+		padding: 30px 5px;
+	}
+	.message {
+		max-width: 200px;
+	}
+}

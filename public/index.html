@@ -5,28 +5,40 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Chat app</title>
-		<link rel="stylesheet" href="style.css" />
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 		<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="./output.css" />
+		<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
-		<div class="chat-container">
-			<div class="message-header">
-				<h3>Chat app</h3>
-				<h3 class="active-users">
-					<div class="green-dot"></div>
-					Active users: <span class="total-user" style="margin-left: 5px"></span>
-				</h3>
-			</div>
-			<div class="message-body"></div>
-			<form autocomplete="off">
-				<input type="text" placeholder="Enter your message" autofocus id="formInput" />
-				<button type="submit" id="submitFormBtn"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
-			</form>
-		</div>
+		<!-- <a href="chat.html"> Chat </a> -->
 
-		<script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
-		<script src="/socket.io/socket.io.js"></script>
-		<script src="./app.js"></script>
+		<!-- <span class="loading loading-dots loading-lg bg-sky-700"></span> -->
+
+		<form action="chat.html" class="max-w-[384px] w-96 rounded-md mx-auto bg-white px-5 py-8">
+			<h3 class="font-medium text-xl mb-5 text-sky-600 underline uppercase">Login</h3>
+
+			<div class="mb-5">
+				<label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Username</label>
+
+				<input type="text" id="username" name="username" placeholder="Username" class="input input-bordered w-full" required />
+			</div>
+			<div class="mb-5">
+				<label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Room</label>
+
+				<select required name="room" id="room" class="select select-bordered w-full">
+					<option value="" disabled selected>Rooms</option>
+					<option value="JavaScript">JavaScript</option>
+					<option value="Python">Python</option>
+					<option value="PHP">PHP</option>
+					<option value="C#">C#</option>
+					<option value="Ruby">Ruby</option>
+					<option value="Java">Java</option>
+				</select>
+			</div>
+
+			<button type="submit" class="btn btn-active btn-primary w-full">Submit</button>
+		</form>
+		<script src="https://cdn.jsdelivr.net/npm/qs@6.12.3/dist/qs.min.js"></script>
 	</body>
 </html>

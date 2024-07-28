@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Chat app</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="./output.css" />
+		<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div class="h-96 w-96 relative rounded-md overflow-hidden bg-slate-700">
+			<!-- header -->
+			<div class="bg-white py-2 flex justify-end px-2 space-x-2">
+				<div class="mr-auto flex items-center justify-center">
+					<p>Room: <span id="room" class="font-bold"></span></p>
+				</div>
+				<div class="">
+					<button class="btn btn-sm btn-outline btn-circle btn-primary" id="copy-btn" title="Copy Link">
+						<i class="fa fa-clone" aria-hidden="true"></i>
+					</button>
+					<button class="btn btn-sm btn-outline btn-circle btn-primary" id="leave-btn" title="Logout">
+						<i class="fa fa-sign-out" aria-hidden="true"></i>
+					</button>
+				</div>
+
+				<!-- Start Total Active Users -->
+				<div class="relative bg-slate-800 max-w-fit text-white px-3 py-1 rounded-md cursor cursor-not-allowed">
+					Active: <span class="total-user"></span>
+
+					<div class="absolute -top-1 -right-1">
+						<span class="relative flex h-3 w-3">
+							<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+							<span class="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
+						</span>
+					</div>
+				</div>
+			</div>
+			<!-- End Total Active Users -->
+
+			<!-- End header -->
+
+			<!-- message body -->
+			<div class="message-body mt-2 pl-2 h-[274px] overflow-y-scroll scroll-smooth"></div>
+			<!-- End message body -->
+
+			<!-- form -->
+			<form autocomplete="off" class="absolute mt-1 w-full">
+				<div class="w-full flex gap-2">
+					<input type="text" placeholder="Type here..." class="input input-bordered w-full bg-transparent text-white ml-1" id="formInput" autofocus />
+
+					<button type="submit" id="submitFormBtn" class="mr-3"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+				</div>
+			</form>
+			<!-- End form -->
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/qs@6.12.3/dist/qs.min.js"></script>
+		<script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="./app.js"></script>
+	</body>
+</html>
